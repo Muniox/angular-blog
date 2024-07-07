@@ -10,10 +10,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HeaderComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    HeaderComponent,
+    HomePageComponent,
+    LoginPageComponent,
+    FooterComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
