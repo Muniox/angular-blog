@@ -61,3 +61,30 @@ body { margin: 0; font-family: "Montserrat", "Helvetica Neue", sans-serif; color
   box-shadow: none !important;
 }
 
+.fix-min-h-screen {
+  min-height: 100vh;
+}
+
+.primary-gradient {
+  background: linear-gradient(270deg, #6C63FF -3.81%, #605D94 108.89%);
+  border: 1px solid #6C63FF;
+}
+
+.primary-gradient:hover{
+  background: transparent;
+  color: #6C63FF;
+}
+
+.post-text {
+  hyphens: auto;
+}
+
+.post-text ul {
+  @apply list-disc list-inside
+}
+
+.post-text ol {
+  @apply list-decimal list-inside
+}
+
+
