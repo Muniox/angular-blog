@@ -1,14 +1,17 @@
 <div class="mt-8 flex-grow flex flex-col items-center justify-center gap-10">
   <h1 class="text-4xl">Logowanie</h1>
-  <form class="flex mt-6 gap-10 justify-center items-center flex-col">
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="submitHandler()"
+    class="flex mt-6 gap-10 justify-center items-center flex-col">
     <mat-form-field appearance="outline">
       <mat-label> Email </mat-label>
-      <input matInput />
+      <input matInput formControlName="email" />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label> Password </mat-label>
-      <input matInput />
+      <input matInput formControlName="password" />
     </mat-form-field>
 
     <button
