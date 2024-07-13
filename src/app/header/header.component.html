@@ -27,7 +27,7 @@
         priority />
     </div>
     <div class="md:flex md:items-center gap-3">
-      <a routerLink="/register">
+      <a routerLink="/auth" [queryParams]="{ isLoginMode: false }">
         <button
           type="button"
           class="rounded-full primary-gradient text-white px-8 py-4 font-semibold text-xl block mx-auto md:mx-0 mt-5 xl:mt-0 duration-300">

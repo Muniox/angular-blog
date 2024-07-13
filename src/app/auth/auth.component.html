@@ -1,0 +1,42 @@
+<div class="mt-8 flex-grow flex flex-col items-center justify-center gap-5">
+  <h1 class="text-4xl">{{ isLoginMode ? 'Logowanie' : 'Rejestracja' }}</h1>
+  <form
+    [formGroup]="authForm"
+    class="flex mt-6 gap-5 justify-center items-center flex-col"
+    (ngSubmit)="onSubmit()">
+    @if (!isLoginMode) {
+      <mat-form-field appearance="outline">
+        <mat-label> Username </mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+    }
+
+    <mat-form-field appearance="outline">
+      <mat-label> Email </mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Password </mat-label>
+      <input matInput formControlName="password" />
+    </mat-form-field>
+
+    <button
+      type="submit"
+      class="rounded-full primary-gradient text-white px-8 py-4 font-semibold text-xl duration-300">
+      <!-- '[disabled]="!authForm.valid' -->
+      {{ authForm.valid }}
+      {{ isLoginMode ? 'Zaloguj' : 'Zarejestruj' }}
+    </button>
+  </form>
+  <span class="flex flex-col gap-6 sm:flex-row sm:items-center">
+    {{ isLoginMode ? 'Nie masz jeszcze konta?' : 'Czy masz już swoje konto?' }}
+
+    <button
+      type="button"
+      class="rounded-full primary-gradient text-white px-4 py-3 font-semibold text-sm duration-300 block mx-auto"
+      (click)="changeMode()">
+      {{ isLoginMode ? 'Zarejestruj się' : 'Logowanie' }}
+    </button>
+  </span>
+</div>
