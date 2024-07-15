@@ -8,17 +8,25 @@
       <mat-form-field appearance="outline">
         <mat-label> Username </mat-label>
         <input matInput formControlName="username" />
+        <mat-error> required </mat-error>
       </mat-form-field>
     }
 
     <mat-form-field appearance="outline">
       <mat-label> Email </mat-label>
       <input matInput formControlName="email" />
+      @if (authForm.controls.email.errors?.required) {
+        <mat-error> required </mat-error>
+      }
+      @if (authForm.controls.email.errors?.email) {
+        <mat-error> not valid email </mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label> Password </mat-label>
       <input matInput formControlName="password" />
+      <mat-error> required </mat-error>
     </mat-form-field>
 
     <button

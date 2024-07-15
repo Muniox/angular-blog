@@ -66,18 +66,18 @@ export class AuthComponent implements OnInit {
     //change mode
     this.isLoginMode = !this.isLoginMode;
 
-    //check what current mode is
+    //check what current mode is and set validators
     if (!this.isLoginMode) {
       const usernameInput = this.authForm.controls.username;
       usernameInput.setValidators([Validators.required]);
     }
-
+    //check what current mode is and remove validators
     if (this.isLoginMode) {
       const usernameInput = this.authForm.controls.username;
       usernameInput.clearValidators();
     }
 
-    //reset form
+    //clear form
     this.authForm.reset();
 
     //update query params
