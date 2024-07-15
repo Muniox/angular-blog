@@ -15,6 +15,8 @@ import { FooterComponent } from './footer/footer.component';
 import { NgOptimizedImage } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
+import { PostComponent } from './post/post.component';
+import { PostListComponent } from './post/post-list/post-list.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,9 @@ import { AuthComponent } from './auth/auth.component';
     HomePageComponent,
     FooterComponent,
     AuthComponent,
+    PostComponent,
+    PostListComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,
