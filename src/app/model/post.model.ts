@@ -1,5 +1,6 @@
 // TODO: check optional types
 export interface Post {
+  id: string;
   title: string;
   description: string;
   img?: string; //only get form api
