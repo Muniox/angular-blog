@@ -23,9 +23,8 @@
 
     <button
       type="submit"
-      class="rounded-full primary-gradient text-white px-8 py-4 font-semibold text-xl duration-300">
-      <!-- '[disabled]="!authForm.valid' -->
-      {{ authForm.valid }}
+      class="rounded-full primary-gradient text-white px-8 py-4 font-semibold text-xl duration-300"
+      [disabled]="!authForm.valid">
       {{ isLoginMode ? 'Zaloguj' : 'Zarejestruj' }}
     </button>
   </form>
