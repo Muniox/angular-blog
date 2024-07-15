@@ -1,8 +1,4 @@
 <app-header />
-<img
-  src="assets/shape.svg"
-  alt="decoration shape"
-  class="absolute top-32 right-1/2 translate-x-1/2 !z-10 hidden xl:inline w-[1400px]" />
 <main class="mt-12 flex-grow" id="menu">
   <form class="relative max-w-min mx-auto md:ml-auto md:mr-0 mt-5">
     <input
@@ -10,65 +6,70 @@
       placeholder="szukaj tematu"
       class="w-48 md:w-64 shadow-sm rounded-full bg-gray-200 placeholder:text-gray-500 pr-14 pl-5 border-0" />
     <button type="button" class="absolute top-1/2 right-4 -translate-y-1/2">
-      <img src="assets/glass.svg" alt="szkło powiększające" class="w-7" />
+      <img
+        ngSrc="assets/glass.svg"
+        alt="szkło powiększające"
+        class="w-7"
+        width="28"
+        height="25" />
     </button>
   </form>
   <div>select</div>
   <div class="mt-5">
-    <ul class="flex place-content-between">
+    <ul class="md:flex place-content-between hidden">
       <li>
         <a
           routerLink="/"
-          class="w-full xl:text-base md:block hover:text-blue-500 px-4 py-3 md:text-sm hidden">
+          class="w-full xl:text-base md:block hover:text-blue-500 px-4 py-3 md:text-sm">
           Wszystkie
         </a>
       </li>
       <li>
         <a
           routerLink="?cat=react"
-          class="w-full xl:text-base md:block hover:text-blue-400 px-4 py-3 md:text-sm hidden">
+          class="w-full xl:text-base md:block hover:text-blue-400 px-4 py-3 md:text-sm">
           React
         </a>
       </li>
       <li>
         <a
           routerLink="/?cat=vanilla%20javascript"
-          class="w-full xl:text-base md:block hover:text-blue-400 px-4 py-3 md:text-sm hidden">
+          class="w-full xl:text-base md:block hover:text-blue-400 px-4 py-3 md:text-sm">
           Vanilla JavaScript
         </a>
       </li>
       <li>
         <a
           routerLink="/?cat=node"
-          class="w-full xl:text-base md:block hover:text-blue-400 px-4 py-3 md:text-sm hidden">
+          class="w-full xl:text-base md:block hover:text-blue-400 px-4 py-3 md:text-sm">
           Node
         </a>
       </li>
       <li>
         <a
           routerLink="/?cat=express"
-          class="w-full xl:text-base md:block hover:text-blue-400 px-4 py-3 md:text-sm hidden">
+          class="w-full xl:text-base md:block hover:text-blue-400 px-4 py-3 md:text-sm">
           Express
         </a>
       </li>
       <li>
         <a
           routerLink="/?cat=typescript"
-          class="w-full xl:text-base md:block hover:text-blue-400 px-4 py-3 md:text-sm hidden">
+          class="w-full xl:text-base md:block hover:text-blue-400 px-4 py-3 md:text-sm">
           TypeScript
         </a>
       </li>
       <li>
         <a
           routerLink="/?cat=nestjs"
-          class="w-full xl:text-base md:block hover:text-blue-400 px-4 py-3 md:text-sm hidden">
+          class="w-full xl:text-base md:block hover:text-blue-400 px-4 py-3 md:text-sm">
           NestJS
         </a>
       </li>
       <li>
         <a
           routerLink="/?cat=other"
-          class="w-full xl:text-base md:block hover:text-blue-600 px-4 py-3 md:text-sm hidden">
+          class="w-full xl:text-base md:block hover:text-blue-600 px-4 py-3 md:text-sm">
           Other
         </a>
       </li>

@@ -13,7 +13,7 @@ $tailwind-blue: (
   700: #1d4ed8,
   800: #1e40af,
   900: #1e3a8a,
-  contrast:(
+  contrast: (
     50: rgba(black, 0.87),
     100: rgba(black, 0.87),
     200: rgba(black, 0.87),
@@ -24,18 +24,20 @@ $tailwind-blue: (
     700: white,
     800: white,
     900: white,
-  )
+  ),
 );
 
-$my-theme: mat.define-light-theme((
-  color: (
-    primary: mat.define-palette($tailwind-blue, 600),
-    accent: mat.define-palette(mat.$indigo-palette, A200, A100, A400),
-    warn: mat.define-palette(mat.$red-palette),
-  ),
-  typography: mat.define-typography-config(),
-  density: 0,
-));
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.define-palette($tailwind-blue, 600),
+      accent: mat.define-palette(mat.$indigo-palette, A200, A100, A400),
+      warn: mat.define-palette(mat.$red-palette),
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
 
 @include mat.core-theme($my-theme);
 @include mat.form-field-theme($my-theme);
@@ -43,18 +45,23 @@ $my-theme: mat.define-light-theme((
 @include mat.form-field-color($my-theme);
 @include mat.form-field-density($my-theme);
 
-
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+  color: rgba(black, 0.87);
+}
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: "Montserrat", "Helvetica Neue", sans-serif; color: rgba(black, 0.87) }
-
-.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field .mdc-notched-outline__notch {
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field
+  .mdc-notched-outline__notch {
   border-right-style: hidden;
 }
 .mat-mdc-input-element {
@@ -66,13 +73,26 @@ body { margin: 0; font-family: "Montserrat", "Helvetica Neue", sans-serif; color
 }
 
 .primary-gradient {
-  background: linear-gradient(270deg, #6C63FF -3.81%, #605D94 108.89%);
-  border: 1px solid #6C63FF;
+  background: linear-gradient(270deg, #6c63ff -3.81%, #605d94 108.89%);
+  border: 1px solid #6c63ff;
 }
 
-.primary-gradient:hover{
+.primary-gradient:hover {
   background: transparent;
-  color: #6C63FF;
+  color: #6c63ff;
+  border: 1px solid #6c63ff;
+}
+
+.primary-gradient:hover:disabled {
+  background: rgba(128, 128, 128, 0.63);
+  color: white;
+  border: 1px solid rgba(128, 128, 128, 0.63);
+}
+
+.primary-gradient:disabled {
+  background: rgba(128, 128, 128, 0.63);
+  color: white;
+  border: 1px solid rgba(128, 128, 128, 0.63);
 }
 
 .post-text {
@@ -80,11 +100,9 @@ body { margin: 0; font-family: "Montserrat", "Helvetica Neue", sans-serif; color
 }
 
 .post-text ul {
-  @apply list-disc list-inside
+  @apply list-disc list-inside;
 }
 
 .post-text ol {
-  @apply list-decimal list-inside
+  @apply list-decimal list-inside;
 }
-
-

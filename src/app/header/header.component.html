@@ -1,41 +1,59 @@
-<header class="!z-30 relative">
-  <div class="md:flex xl:mt-10 md:mt-24">
-    <div>
-      <h1
-        class="font-bold text-2xl text-center mt-5 md:text-left md:text-5xl xl:text-7xl">
-        JavaScript
-        <span class="block font-light md:text-3xl md:mt-10">
-          Blog o JavaScript
-        </span>
-      </h1>
-      <p
-        class="hidden md:block text-xl font-light md:mt-10 xl:mt-20 leading-10">
-        Node, React, Express oraz inne rzeczy powiązane z&nbsp;JavaScriptem –
-        o&nbsp;tym piszemy na naszym blogu poświęconym technologiom JS.
-        Przedstawiamy zarówno podstawową wiedzę dla początkujących,
-        jak&nbsp;i&nbsp;bardziej zaawansowane tematy z&nbsp;zakresu JavaScript.
+<header>
+  <div class="!z-30 relative">
+    <div class="md:flex xl:mt-10 md:mt-24">
+      <div>
+        <h1
+          class="font-bold text-2xl text-center mt-5 md:text-left md:text-5xl xl:text-7xl">
+          JavaScript
+          <span class="block font-light md:text-3xl md:mt-10">
+            Blog o JavaScript
+          </span>
+        </h1>
+        <p
+          class="hidden md:block text-xl font-light md:mt-10 xl:mt-20 leading-10">
+          Node, React, Express oraz inne rzeczy powiązane z&nbsp;JavaScriptem –
+          o&nbsp;tym piszemy na naszym blogu poświęconym technologiom JS.
+          Przedstawiamy zarówno podstawową wiedzę dla początkujących,
+          jak&nbsp;i&nbsp;bardziej zaawansowane tematy z&nbsp;zakresu
+          JavaScript.
+        </p>
+      </div>
+      <img
+        ngSrc="assets/programmer.svg"
+        alt="Programista"
+        class="mx-auto mt-4 md:max-w-[483px] xl:max-w-none xl:min-w-[702px] xl:mt-10"
+        height="512"
+        width="702"
+        priority />
+    </div>
+    <div class="md:flex md:items-center gap-3">
+      <a routerLink="/auth" [queryParams]="{ isLoginMode: false }">
+        <button
+          type="button"
+          class="rounded-full primary-gradient text-white px-8 py-4 font-semibold text-xl block mx-auto md:mx-0 mt-5 xl:mt-0 duration-300">
+          Zarejestruj się
+        </button>
+      </a>
+      <p class="hidden md:inline">
+        jeśli chcesz do nas dołączyć oraz pomóc w rozwijaniu bloga.
       </p>
     </div>
-    <img
-      src="assets/programmer.svg"
-      alt="Programista"
-      class="mx-auto mt-4 md:max-w-[483px] xl:max-w-none xl:min-w-[702px] xl:mt-10" />
-  </div>
-  <div class="md:flex md:items-center gap-3">
-    <a routerLink="/register">
-      <button
-        type="button"
-        class="rounded-full primary-gradient text-white px-8 py-4 font-semibold text-xl block mx-auto md:mx-0 mt-5 xl:mt-0 duration-300">
-        Zarejestruj się
+    <div class="mt-5 flex justify-center">
+      <button type="button">
+        <img
+          ngSrc="assets/arrow.svg"
+          alt=""
+          class="max-w-[70px] md:max-w-[90]"
+          height="90"
+          width="90" />
       </button>
-    </a>
-    <p class="hidden md:inline">
-      jeśli chcesz do nas dołączyć oraz pomóc w rozwijaniu bloga.
-    </p>
+    </div>
   </div>
-  <div class="mt-5 flex justify-center">
-    <button type="button">
-      <img src="assets/arrow.svg" alt="" class="max-w-[70px] md:max-w-[90]" />
-    </button>
-  </div>
+
+  <img
+    ngSrc="assets/shape.svg"
+    alt="decoration shape"
+    class="absolute top-32 right-1/2 translate-x-1/2 !z-10 hidden xl:inline w-[1400px]"
+    height="674"
+    width="1400" />
 </header>
