@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../types/user.interface';
 import { environment } from '../../environments/environment';
 import { UserRegister } from '../types/user-register.interface';
@@ -18,15 +18,24 @@ export class AuthService {
     private router: Router
   ) {}
 
+  checkUserInLocalStorage() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user ? this.userSubject.next(user) : this.userSubject.next(null);
+  }
+
   login(email: string, password: string): void {
     this.http
       .post<User>(environment.blogApiUrl + '/auth/login', {
         email,
         password,
       })
+      .pipe(
+        tap(user => {
+          localStorage.setItem('user', JSON.stringify(user));
+        })
+      )
       .subscribe(user => {
         this.userSubject.next(user);
-        console.log(user);
         this.router.navigate(['/']);
       });
   }
@@ -41,5 +50,10 @@ export class AuthService {
       .subscribe(() => {
         this.router.navigate(['/auth'], { queryParams: { isLoginMode: true } });
       });
+  }
+
+  logout(): void {
+    localStorage.removeItem('user');
+    this.userSubject.next(null);
   }
 }
