@@ -1,5 +1,5 @@
-<app-header />
-<main class="mt-12 flex-grow" id="menu">
+<app-header (scrollEvent)="scrollToElementEvent()" />
+<main class="mt-12 flex-grow" #menu>
   <form class="relative max-w-min mx-auto md:ml-auto md:mr-0 mt-5">
     <input
       type="text"
