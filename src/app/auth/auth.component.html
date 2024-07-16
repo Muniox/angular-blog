@@ -45,5 +45,18 @@
       (click)="changeMode()">
       {{ isLoginMode ? 'Zarejestruj się' : 'Logowanie' }}
     </button>
+    or
+    <button
+      type="button"
+      class="rounded-full primary-gradient text-white px-4 py-3 font-semibold text-sm duration-300 block mx-auto"
+      (click)="loginAsTestUser()">
+      login as test user
+    </button>
+    or
+    <button
+      type="button"
+      class="rounded-full primary-gradient text-white px-4 py-3 font-semibold text-sm duration-300 block mx-auto">
+      login as test admin
+    </button>
   </span>
 </div>

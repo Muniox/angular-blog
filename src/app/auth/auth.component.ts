@@ -86,4 +86,14 @@ export class AuthComponent implements OnInit {
       queryParams: { isLoginMode: this.isLoginMode },
     });
   }
+
+  loginAsTestUser() {
+    this.authForm.controls.email.setValue('test@email.com');
+    this.authForm.controls.password.setValue('Testowy@1');
+  }
+
+  loginAsTestAdmin() {
+    this.authForm.controls.email.setValue('admin@email.com');
+    this.authForm.controls.password.setValue('Testowy@2');
+  }
 }
