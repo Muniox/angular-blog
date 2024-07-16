@@ -6,7 +6,9 @@
   <div class="flex gap-8 mt-4 w-full xl:mt-0">
     <p class="font-bold hidden md:inline">
       Opublikowane:
-      <span class="text-blue-400 ml-2">{{ post.createdAt }}</span>
+      <span class="text-blue-400 ml-2">{{
+        post.createdAt | date: 'longDate'
+      }}</span>
     </p>
     <p class="font-bold hidden md:inline">
       Kategoria:
