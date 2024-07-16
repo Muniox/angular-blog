@@ -19,6 +19,7 @@ import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post/post-list/post-list.component';
 import { PostItemComponent } from './post/post-list/post-item/post-item.component';
 import { PostDetailComponent } from './post/post-detail/post-detail.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PostDetailComponent } from './post/post-detail/post-detail.component';
     PostComponent,
     PostItemComponent,
     PostDetailComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
