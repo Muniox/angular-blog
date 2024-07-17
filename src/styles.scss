@@ -106,3 +106,5 @@ body {
 .post-text ol {
   @apply list-decimal list-inside;
 }
+
+@import '../node_modules/quill/dist/quill.snow.css';

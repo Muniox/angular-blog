@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
+import { QuillModule } from 'ngx-quill';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { PostListComponent } from './post/post-list/post-list.component';
 import { PostItemComponent } from './post/post-list/post-item/post-item.component';
 import { PostDetailComponent } from './post/post-detail/post-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { WritePostComponent } from './write-post/write-post.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     PostItemComponent,
     PostDetailComponent,
     PageNotFoundComponent,
+    WritePostComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NgOptimizedImage,
     ReactiveFormsModule,
     HttpClientModule,
+    QuillModule.forRoot(),
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
