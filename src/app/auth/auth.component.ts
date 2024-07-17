@@ -25,14 +25,14 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     //check query params and set mode
-    const isLogingMode: string =
-      this.route.snapshot.queryParams['isLoggingMode'];
-    if (isLogingMode === 'true') {
-      this.isLoginMode = true;
-    }
-    if (isLogingMode === 'false') {
-      this.isLoginMode = false;
-    }
+    this.route.queryParams.subscribe((data: { isLoginMode: string }) => {
+      if (data.isLoginMode === 'true') {
+        this.isLoginMode = true;
+      }
+      if (data.isLoginMode === 'false') {
+        this.isLoginMode = false;
+      }
+    });
 
     //check what current mode is
     if (!this.isLoginMode) {
@@ -63,28 +63,25 @@ export class AuthComponent implements OnInit {
   }
 
   changeMode() {
-    //change mode
-    this.isLoginMode = !this.isLoginMode;
+    //update query params
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { isLoginMode: !this.isLoginMode },
+    });
 
     //check what current mode is and set validators
-    if (!this.isLoginMode) {
+    if (this.isLoginMode) {
       const usernameInput = this.authForm.controls.username;
       usernameInput.setValidators([Validators.required]);
     }
     //check what current mode is and remove validators
-    if (this.isLoginMode) {
+    if (!this.isLoginMode) {
       const usernameInput = this.authForm.controls.username;
       usernameInput.clearValidators();
     }
 
     //clear form
     this.authForm.reset();
-
-    //update query params
-    this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: { isLoginMode: this.isLoginMode },
-    });
   }
 
   loginAsTestUser() {

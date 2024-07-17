@@ -18,27 +18,34 @@
       >
     </li>
 
-    <li>
-      <a routerLink="/write" class="block px-3 py-0.5 hover:text-blue-400"
-        >Utwórz post</a
-      >
-    </li>
+    @if (user$ | async; as user) {
+      <li>
+        <a routerLink="/write" class="block px-3 py-0.5 hover:text-blue-400"
+          >Utwórz post</a
+        >
+      </li>
 
-    <li
-      class="block px-3 py-0.5 text-blue-400 underline-offset-4 underline"></li>
-    <li>
-      <a routerLink="/" class="block px-3 py-0.5 hover:text-blue-400">
-        Wyloguj
-      </a>
-    </li>
-    <li>
-      <a
-        routerLink="/auth"
-        [queryParams]="{ isLoginMode: true }"
-        class="block px-3 py-0.5 hover:text-blue-400">
-        Logowanie
-      </a>
-    </li>
+      <li class="block px-3 py-0.5 text-blue-400 underline-offset-4 underline">
+        {{ user.username }}
+      </li>
+      <li>
+        <a
+          routerLink="/"
+          class="block px-3 py-0.5 hover:text-blue-400"
+          (click)="logoutUser()">
+          Wyloguj
+        </a>
+      </li>
+    } @else {
+      <li>
+        <a
+          routerLink="/auth"
+          [queryParams]="{ isLoginMode: true }"
+          class="block px-3 py-0.5 hover:text-blue-400">
+          Logowanie
+        </a>
+      </li>
+    }
   </ul>
   <!--  <Sidebar />-->
 </nav>

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../types/user.interface';
 import { environment } from '../../environments/environment';
 import { UserRegister } from '../types/user-register.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,15 @@ export class AuthService {
   private userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   readonly user$: Observable<User> = this.userSubject.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {}
+
+  checkUserInLocalStorage() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user ? this.userSubject.next(user) : this.userSubject.next(null);
+  }
 
   login(email: string, password: string): void {
     this.http
@@ -20,9 +29,14 @@ export class AuthService {
         email,
         password,
       })
+      .pipe(
+        tap(user => {
+          localStorage.setItem('user', JSON.stringify(user));
+        })
+      )
       .subscribe(user => {
         this.userSubject.next(user);
-        console.log(user);
+        this.router.navigate(['/']);
       });
   }
 
@@ -33,6 +47,13 @@ export class AuthService {
         username,
         password,
       })
-      .subscribe();
+      .subscribe(() => {
+        this.router.navigate(['/auth'], { queryParams: { isLoginMode: true } });
+      });
+  }
+
+  logout(): void {
+    localStorage.removeItem('user');
+    this.userSubject.next(null);
   }
 }
