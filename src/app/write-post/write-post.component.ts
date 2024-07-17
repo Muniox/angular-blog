@@ -6,4 +6,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrl: './write-post.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class WritePostComponent {}
+export class WritePostComponent {
+  onPostPublish() {}
+}

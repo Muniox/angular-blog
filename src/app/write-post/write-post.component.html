@@ -1,8 +1,8 @@
 <form class="mt-10 flex flex-col gap-5 md:flex-grow md:flex-row">
   <div class="flex flex-col flex-1 gap-10">
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Title</mat-label>
-      <input type="text" matInput formControlName="title" />
+      <input type="text" matInput />
       <mat-error> required </mat-error>
     </mat-form-field>
     <div class="flex flex-grow flex-1">
@@ -12,128 +12,59 @@
   <div class="flex flex-col">
     <div class="flex flex-col gap-3">
       <h1 class="text-xl font-semibold">Publish Post</h1>
-      <p class="font-semibold">
-        Status:
-        <span class="ml-2 text-blue-400"> Draft </span>
-      </p>
-      <p class="font-semibold">
-        Visibility:
-        <span class="ml-2 text-blue-400"> Public </span>
-      </p>
+      <!--      <p class="font-semibold">-->
+      <!--        Status:-->
+      <!--        <span class="ml-2 text-blue-400"> Draft </span>-->
+      <!--      </p>-->
+      <!--      <p class="font-semibold">-->
+      <!--        Visibility:-->
+      <!--        <span class="ml-2 text-blue-400"> Public </span>-->
+      <!--      </p>-->
 
       <label
         class="rounded-full px-5 py-2 text-blue-400 border-blue-400 border text-base hover:bg-blue-400 hover:text-white transition duration-300 cursor-pointer"
-        htmlFor="file">
-        <input type="file" name="" id="file" />
-        Upload Image
+        for="file">
+        <input type="file" name="Chose file" id="file" class="cursor-pointer" />
       </label>
       <div class="flex gap-2">
+        <!--        <button-->
+        <!--          type="button"-->
+        <!--          class="rounded-full px-5 py-2 text-blue-400 border-blue-400 border text-base hover:bg-blue-400 hover:text-white transition duration-300">-->
+        <!--          Save as draft-->
+        <!--        </button>-->
         <button
           type="button"
-          class="rounded-full px-5 py-2 text-blue-400 border-blue-400 border text-base hover:bg-blue-400 hover:text-white transition duration-300">
-          Save as draft
-        </button>
-        <button
-          type="button"
-          onClick="{handleSubmit}"
-          class="rounded-full px-5 py-2 text-blue-400 border-blue-400 border text-base hover:bg-blue-400 hover:text-white transition duration-300">
+          class="rounded-full px-5 py-2 text-blue-400 border-blue-400 border text-base hover:bg-blue-400 hover:text-white transition duration-300"
+          (click)="onPostPublish()">
           Publish
         </button>
       </div>
     </div>
     <div class="flex flex-col gap-1 mt-4">
       <h1 class="font-semibold text-xl mb-2">Category</h1>
-      <div class="">
-        <label
-          htmlFor="react"
-          class="flex gap-1 items-center cursor-pointer py-2">
-          <input
-            type="radio"
-            name="category"
-            value="React"
-            id="react"
-            class="cursor-pointer" />
-          React
-        </label>
-      </div>
-      <div class="">
-        <label
-          htmlFor="vanilla"
-          class="flex gap-1 items-center cursor-pointer py-2">
-          <input
-            type="radio"
-            name="category"
-            value="Vanilla JavaScript"
-            id="vanilla"
-            class="cursor-pointer" />
-          Vanilla JavaScript
-        </label>
-      </div>
-      <div class="">
-        <label
-          htmlFor="node"
-          class="flex gap-1 items-center cursor-pointer py-2">
-          <input
-            type="radio"
-            name="category"
-            value="Node"
-            id="node"
-            class="cursor-pointer" />
-          Node
-        </label>
-      </div>
-      <div class="">
-        <label
-          htmlFor="express"
-          class="flex gap-1 items-center cursor-pointer py-2">
-          <input
-            type="radio"
-            name="category"
-            value="Express"
-            id="express"
-            class="cursor-pointer" />
-          Express
-        </label>
-      </div>
-      <div class="">
-        <label
-          htmlFor="typescript"
-          class="flex gap-1 items-center cursor-pointer py-2">
-          <input
-            type="radio"
-            name="category"
-            value="TypeScript"
-            id="typescript"
-            class="cursor-pointer" />
-          TypeScript
-        </label>
-      </div>
-      <div class="">
-        <label
-          htmlFor="nest"
-          class="flex gap-1 items-center cursor-pointer py-2">
-          <input
-            type="radio"
-            name="category"
-            value="NestJS"
-            id="nest"
-            class="cursor-pointer" />
-          NestJS
-        </label>
-      </div>
-      <div class="">
-        <label
-          htmlFor="other"
-          class="flex gap-1 items-center cursor-pointer py-2">
-          <input
-            type="radio"
-            name="category"
-            value="Other"
-            id="other"
-            class="cursor-pointer" />
-          Other
-        </label>
-      </div>
+      <mat-radio-group name="category">
+        <mat-radio-button value="React" class="" color="primary"
+          >React</mat-radio-button
+        >
+        <mat-radio-button value="Vanilla JavaScript" class="block mt-2"
+          >Vanilla JavaScript</mat-radio-button
+        >
+        <mat-radio-button value="Node.js" class="block mt-2"
+          >Node.js</mat-radio-button
+        >
+        <mat-radio-button value="Express" class="block mt-2"
+          >Express</mat-radio-button
+        >
+        <mat-radio-button value="TypeScript" class="block mt-2"
+          >TypeScript</mat-radio-button
+        >
+        <mat-radio-button value="NestJS" class="block mt-2"
+          >NestJS</mat-radio-button
+        >
+        <mat-radio-button value="Other" class="block mt-2"
+          >Other</mat-radio-button
+        >
+      </mat-radio-group>
     </div>
   </div>
 </form>

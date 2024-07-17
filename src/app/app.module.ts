@@ -22,6 +22,7 @@ import { PostItemComponent } from './post/post-list/post-item/post-item.componen
 import { PostDetailComponent } from './post/post-detail/post-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WritePostComponent } from './write-post/write-post.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { WritePostComponent } from './write-post/write-post.component';
     NgOptimizedImage,
     ReactiveFormsModule,
     HttpClientModule,
+    MatRadioModule,
     QuillModule.forRoot(),
   ],
   providers: [provideAnimationsAsync()],
