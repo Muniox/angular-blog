@@ -25,10 +25,16 @@ export class AuthService {
 
   login(email: string, password: string): void {
     this.http
-      .post<User>(environment.blogApiUrl + '/auth/login', {
-        email,
-        password,
-      })
+      .post<User>(
+        environment.blogApiUrl + '/auth/login',
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .pipe(
         tap(user => {
           localStorage.setItem('user', JSON.stringify(user));

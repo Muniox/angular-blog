@@ -1,12 +1,15 @@
-<form class="mt-10 flex flex-col gap-5 md:flex-grow md:flex-row">
-  <div class="flex flex-col flex-1 gap-10">
+<form
+  [formGroup]="postForm"
+  class="mx-5 flex flex-col gap-5 md:flex-grow md:flex-row"
+  (ngSubmit)="onPostFormSubmit()">
+  <div class="flex flex-col flex-1">
     <mat-form-field appearance="outline">
       <mat-label>Title</mat-label>
-      <input type="text" matInput />
+      <input type="text" matInput formControlName="title" />
       <mat-error> required </mat-error>
     </mat-form-field>
-    <div class="flex flex-grow flex-1">
-      <quill-editor></quill-editor>
+    <div>
+      <quill-editor formControlName="description"> </quill-editor>
     </div>
   </div>
   <div class="flex flex-col">
@@ -24,7 +27,12 @@
       <label
         class="rounded-full px-5 py-2 text-blue-400 border-blue-400 border text-base hover:bg-blue-400 hover:text-white transition duration-300 cursor-pointer"
         for="file">
-        <input type="file" name="Chose file" id="file" class="cursor-pointer" />
+        <input
+          type="file"
+          id="file"
+          formControlName="file"
+          class="cursor-pointer"
+          (change)="onFileSelected($event)" />
       </label>
       <div class="flex gap-2">
         <!--        <button-->
@@ -33,37 +41,32 @@
         <!--          Save as draft-->
         <!--        </button>-->
         <button
-          type="button"
-          class="rounded-full px-5 py-2 text-blue-400 border-blue-400 border text-base hover:bg-blue-400 hover:text-white transition duration-300"
-          (click)="onPostPublish()">
+          type="submit"
+          class="rounded-full px-5 py-2 text-blue-400 border-blue-400 border text-base hover:bg-blue-400 hover:text-white transition duration-300">
           Publish
         </button>
       </div>
     </div>
     <div class="flex flex-col gap-1 mt-4">
       <h1 class="font-semibold text-xl mb-2">Category</h1>
-      <mat-radio-group name="category">
-        <mat-radio-button value="React" class="" color="primary"
+      <mat-radio-group formControlName="category">
+        <mat-radio-button value="React" class="block" color="primary"
           >React</mat-radio-button
         >
-        <mat-radio-button value="Vanilla JavaScript" class="block mt-2"
+        <mat-radio-button value="Vanilla JavaScript" class="block"
           >Vanilla JavaScript</mat-radio-button
         >
-        <mat-radio-button value="Node.js" class="block mt-2"
+        <mat-radio-button value="Node.js" class="block"
           >Node.js</mat-radio-button
         >
-        <mat-radio-button value="Express" class="block mt-2"
+        <mat-radio-button value="Express" class="block"
           >Express</mat-radio-button
         >
-        <mat-radio-button value="TypeScript" class="block mt-2"
+        <mat-radio-button value="TypeScript" class="block"
           >TypeScript</mat-radio-button
         >
-        <mat-radio-button value="NestJS" class="block mt-2"
-          >NestJS</mat-radio-button
-        >
-        <mat-radio-button value="Other" class="block mt-2"
-          >Other</mat-radio-button
-        >
+        <mat-radio-button value="NestJS" class="block">NestJS</mat-radio-button>
+        <mat-radio-button value="Other" class="block">Other</mat-radio-button>
       </mat-radio-group>
     </div>
   </div>

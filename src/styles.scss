@@ -1,5 +1,9 @@
 @use '@angular/material' as mat;
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @include mat.core();
 
 $tailwind-blue: (
@@ -44,11 +48,13 @@ $my-theme: mat.define-light-theme(
 @include mat.form-field-base($my-theme);
 @include mat.form-field-color($my-theme);
 @include mat.form-field-density($my-theme);
-
+@include mat.radio-base($my-theme);
+@include mat.radio-base($my-theme);
+@include mat.radio-density($my-theme);
+@include mat.radio-theme($my-theme);
+@include mat.radio-typography($my-theme);
 /* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 html,
 body {
@@ -60,8 +66,7 @@ body {
   color: rgba(black, 0.87);
 }
 
-.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field
-  .mdc-notched-outline__notch {
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mdc-notched-outline__notch {
   border-right-style: hidden;
 }
 .mat-mdc-input-element {
@@ -105,6 +110,10 @@ body {
 
 .post-text ol {
   @apply list-decimal list-inside;
+}
+
+quill-view > div > .ql-editor {
+  display: inline;
 }
 
 @import '../node_modules/quill/dist/quill.snow.css';

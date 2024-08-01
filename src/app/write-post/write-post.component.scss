@@ -1,14 +1,8 @@
-app-wite-post {
+app-write-post {
   @apply mt-10 flex flex-col gap-5 md:flex-grow md:flex-row;
 }
 
-.example-radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0;
-  align-items: flex-start;
+.ql-container {
+ min-height: 400px;
 }
 
-.example-radio-button {
-  margin: 5px;
-}

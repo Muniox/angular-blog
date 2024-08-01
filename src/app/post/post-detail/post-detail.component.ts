@@ -1,14 +1,9 @@
-import {
-  Component,
-  OnInit,
-  SecurityContext,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PostService } from '../../post.service';
 import { Post } from '../../model/post.model';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { DomSanitizer } from '@angular/platform-browser';
+import { ConfigService } from '../../config.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -18,21 +13,20 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class PostDetailComponent implements OnInit {
   post$: Observable<Post> | null = null;
+  url: string;
 
   constructor(
     private postService: PostService,
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
-  ) {}
+    private configService: ConfigService
+  ) {
+    this.url = this.configService.apiUrl;
+  }
 
   ngOnInit(): void {
     const postId: string = this.route.snapshot.params.id;
     this.postService.getSinglePost(postId);
 
     this.post$ = this.postService.singlePost$;
-  }
-
-  sanitizeDescription(description: string) {
-    return this.sanitizer.sanitize(SecurityContext.HTML, description);
   }
 }

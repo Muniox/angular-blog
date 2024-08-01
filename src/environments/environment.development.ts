@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  blogApiUrl: 'https://nest-blog.truemuniox.usermd.net',
+  blogApiUrl: 'http://localhost:3000',
 };

@@ -27,4 +27,12 @@ export class PostService {
       .get<Post>(`${environment.blogApiUrl}/post/${postId}`)
       .subscribe(post => this.singlePostSubject.next(post));
   }
+
+  createPost(post: FormData) {
+    this.http
+      .post(`${environment.blogApiUrl}/post/upload`, post, {
+        withCredentials: true,
+      })
+      .subscribe();
+  }
 }
