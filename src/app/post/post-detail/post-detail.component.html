@@ -1,61 +1,57 @@
-@if (post$ | async; as post) {
-  <img
-    [src]="url + '/post/image/' + post.img"
-    alt="główny obraz"
-    class="float-right" />
-  <div class="">
-    <div
-      class="flex sm:flex-row gap-3 sm:gap-5 sm:text-xl sm:items-center font-bold">
-      <img
-        src="assets/default_author.svg"
-        alt="zdjęcie autora postu"
-        class="max-w-[60px]" />
-      <div class="flex flex-col">
-        <p>
-          Autor:
-          <span class="text-blue-400 ml-2">{{ post.user.username }}</span>
-        </p>
-        <p>
-          Opublikowano:
-          <span class="text-blue-400 ml-2">{{
-            post.createdAt | date: 'longDate'
-          }}</span>
-        </p>
-      </div>
-    </div>
-    <h1 class="text-xl md:text-5xl my-10 font-semibold hidden xl:block">
-      {{ post.title }}
-    </h1>
-    <!--      {currentUser-->
-    <!--            ? currentUser.name === post.author && (-->
-    <!--              <div className="flex gap-10 mt-10">-->
-    <!--                <Link to={`/write?edit=${post.id}`} state={post}>-->
-    <!--                  <img src={Edit} alt="Edit" />-->
-    <!--                  Edytuj-->
-    <!--                </Link>-->
-    <!--                <button-->
-    <!--                  type="button"-->
-    <!--                  onClick={handleDelete}-->
-    <!--      >-->
-    <!--        <img-->
-    <!--          src={Delete}-->
-    <!--      alt="Delete"-->
-    <!--    />-->
-    <!--    Usuń-->
-    <!--  </button>-->
-    <!--</div>-->
-    <!--)-->
-    <!--: null}-->
-  </div>
-
+@if (post) {
   <div>
-    <h1 class="text-xl md:text-5xl mt-10 font-semibold xl:hidden">
-      {{ post.title }}
-    </h1>
-    <div class="post-single mt-10">
-      <quill-view [content]="post.description" theme="snow" format="html" />
+    <img
+      [src]="url + '/post/image/' + post.img"
+      alt="główny obraz"
+      class="float-right" />
+    <div class="">
+      <div
+        class="flex sm:flex-row gap-3 sm:gap-5 sm:text-xl sm:items-center font-bold">
+        <img
+          src="assets/default_author.svg"
+          alt="zdjęcie autora postu"
+          class="max-w-[60px]" />
+        <div class="flex flex-col">
+          <p>
+            Autor:
+            <span class="text-blue-400 ml-2">{{ post.user.username }}</span>
+          </p>
+          <p>
+            Opublikowano:
+            <span class="text-blue-400 ml-2">{{
+              post.createdAt | date: 'longDate'
+            }}</span>
+          </p>
+        </div>
+      </div>
+      <h1 class="text-xl md:text-5xl my-10 font-semibold hidden xl:block">
+        {{ post.title }}
+      </h1>
+      @if (post.user.username === (user$ | async).username) {
+        <div class="flex gap-10 mt-10">
+          <a routerLink="">
+            <img src="assets/edit.png" alt="Edit" />
+            Edytuj
+          </a>
+          <button type="button" (click)="onDeletePost()">
+            <img src="assets/delete.png" alt="Delete" />
+            Usuń
+          </button>
+        </div>
+      }
+    </div>
+
+    <div>
+      <h1 class="text-xl md:text-5xl mt-10 font-semibold xl:hidden">
+        {{ post.title }}
+      </h1>
+      <div class="post-single mt-10">
+        <quill-view [content]="post.description" theme="snow" format="html" />
+      </div>
     </div>
   </div>
 } @else {
-  <div>brak posta</div>
+  <div class="flex flex-grow items-center justify-center">
+    <div>wyświetl loader</div>
+  </div>
 }
