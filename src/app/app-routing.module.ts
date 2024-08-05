@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'post/:id', component: PostDetailComponent },
   { path: 'write', component: WritePostComponent },
+  { path: 'write/:id', component: WritePostComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: '/page-not-found' },
 ];

@@ -29,7 +29,7 @@
       </h1>
       @if (post.user.username === (user$ | async).username) {
         <div class="flex gap-10 mt-10">
-          <a routerLink="">
+          <a [routerLink]="['/write', post.id]">
             <img src="assets/edit.png" alt="Edit" />
             Edytuj
           </a>
