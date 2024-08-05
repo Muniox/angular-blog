@@ -45,6 +45,14 @@ export class PostService {
       .subscribe();
   }
 
+  updatePost(post: FormData, postId: string) {
+    this.http
+      .patch(`${environment.blogApiUrl}/post/${postId}`, post, {
+        withCredentials: true,
+      })
+      .subscribe();
+  }
+
   deletePost(postId: string) {
     this.http
       .delete(`${environment.blogApiUrl}/post/${postId}`, {

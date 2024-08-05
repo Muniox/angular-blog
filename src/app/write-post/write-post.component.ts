@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PostService } from '../post.service';
 import { ActivatedRoute } from '@angular/router';
 import { map, Subscription } from 'rxjs';
@@ -18,10 +18,10 @@ export class WritePostComponent implements OnInit, OnDestroy {
   editMode = true;
   subscriptions = new Subscription();
   postForm = new FormGroup({
-    file: new FormControl<string>(null),
-    title: new FormControl(''),
-    description: new FormControl(''),
-    category: new FormControl<string>(null),
+    file: new FormControl<string>(null, [Validators.required]),
+    title: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    category: new FormControl<string>('Other', [Validators.required]),
   });
 
   constructor(
@@ -29,8 +29,17 @@ export class WritePostComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {}
 
-  async ngOnInit(): Promise<void> {
+  setFormValues(post: Post | null) {
+    if (post && this.editMode) {
+      this.postForm.controls.category.setValue(post.category);
+      this.postForm.controls.description.setValue(post.description);
+      this.postForm.controls.title.setValue(post.title);
+    }
+  }
+
+  ngOnInit(): void {
     this.postId = this.route.snapshot.params.id ?? null;
+    this.editMode = !!this.postId;
 
     this.subscriptions.add(
       this.postService.posts$
@@ -41,12 +50,7 @@ export class WritePostComponent implements OnInit, OnDestroy {
         )
         .subscribe(post => {
           this.post = post ?? null;
-
-          if (this.post) {
-            this.postForm.controls.category.setValue(this.post?.category);
-            this.postForm.controls.description.setValue(this.post?.description);
-            this.postForm.controls.title.setValue(this.post?.title);
-          }
+          this.setFormValues(post);
         })
     );
 
@@ -55,15 +59,12 @@ export class WritePostComponent implements OnInit, OnDestroy {
       this.subscriptions.add(
         this.postService.singlePost$.subscribe(post => {
           this.post = post ?? null;
-
-          if (this.post) {
-            this.postForm.controls.category.setValue(this.post?.category);
-            this.postForm.controls.description.setValue(this.post?.description);
-            this.postForm.controls.title.setValue(this.post?.title);
-          }
+          this.setFormValues(post);
         })
       );
     }
+
+    console.log(this.postForm);
   }
 
   onFileSelected(event: Event) {
@@ -75,11 +76,13 @@ export class WritePostComponent implements OnInit, OnDestroy {
     formData.append('title', this.postForm.controls.title.value);
     formData.append('description', this.postForm.controls.description.value);
     formData.append('file', this.selectedFile);
-    formData.append('category', this.postForm.controls.category.value);
+    formData.append('category', this.postForm.controls.category.value ?? '');
 
-    console.log(this.postForm.controls.description.value);
-    console.log(formData.getAll('file'));
-    this.postService.createPost(formData);
+    if (!this.editMode) {
+      this.postService.createPost(formData);
+    } else {
+      this.postService.updatePost(formData, this.postId);
+    }
   }
 
   ngOnDestroy(): void {

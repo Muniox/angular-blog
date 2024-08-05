@@ -9,7 +9,10 @@
       <mat-error> required </mat-error>
     </mat-form-field>
     <div>
-      <quill-editor formControlName="description"> </quill-editor>
+      <quill-editor formControlName="description" />
+      <mat-error *ngIf="postForm.controls.description.invalid">
+        required
+      </mat-error>
     </div>
   </div>
   <div class="flex flex-col">
@@ -24,16 +27,22 @@
       <!--        <span class="ml-2 text-blue-400"> Public </span>-->
       <!--      </p>-->
 
-      <label
-        class="rounded-full px-5 py-2 text-blue-400 border-blue-400 border text-base hover:bg-blue-400 hover:text-white transition duration-300 cursor-pointer"
-        for="file">
+      <mat-form-field>
+        <mat-label>
+          class="rounded-full px-5 py-2 text-blue-400 border-blue-400 border
+          text-base hover:bg-blue-400 hover:text-white transition duration-300
+          cursor-pointer" for="file">
+        </mat-label>
         <input
+          matNativeControl
           type="file"
           id="file"
           formControlName="file"
           class="cursor-pointer"
           (change)="onFileSelected($event)" />
-      </label>
+      </mat-form-field>
+
+      <mat-error *ngIf="postForm.controls.file.invalid"> required </mat-error>
       <div class="flex gap-2">
         <!--        <button-->
         <!--          type="button"-->
