@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PostService } from '../post.service';
 import { ActivatedRoute } from '@angular/router';
@@ -8,8 +8,7 @@ import { Post } from '../model/post.model';
 @Component({
   selector: 'app-write-post',
   templateUrl: './write-post.component.html',
-  styleUrl: './write-post.component.scss',
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'mt-10 flex flex-col gap-5 md:flex-grow md:flex-row' },
 })
 export class WritePostComponent implements OnInit, OnDestroy {
   selectedFile: File;

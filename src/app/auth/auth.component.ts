@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,8 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss',
-  encapsulation: ViewEncapsulation.None,
+  host: { class: 'flex-grow' },
 })
 export class AuthComponent implements OnInit {
   isLoginMode = true;

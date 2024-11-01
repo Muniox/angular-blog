@@ -6,7 +6,6 @@ import { PostService } from '../../post.service';
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
-  styleUrl: './post-list.component.scss',
 })
 export class PostListComponent implements OnInit {
   posts$: Observable<Post[]>;

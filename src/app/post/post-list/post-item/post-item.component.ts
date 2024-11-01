@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Post } from '../../../model/post.model';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ConfigService } from '../../../config.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-post-item',
@@ -18,14 +18,9 @@ import { ConfigService } from '../../../config.service';
 export class PostItemComponent implements OnInit {
   @Input({ required: true }) post: Post;
   sanitizedDescriptionShort: string;
-  url: string;
+  url = environment.blogApiUrl;
 
-  constructor(
-    private configService: ConfigService,
-    private sanitizer: DomSanitizer
-  ) {
-    this.url = this.configService.apiUrl;
-  }
+  constructor(private sanitizer: DomSanitizer) {}
 
   //TODO: turn off sanitizing!
   ngOnInit() {

@@ -116,4 +116,8 @@ quill-view > div > .ql-editor {
   display: inline;
 }
 
+.ql-container {
+  min-height: 400px;
+}
+
 @import '../node_modules/quill/dist/quill.snow.css';
