@@ -46,6 +46,16 @@ export class AuthService {
       });
   }
 
+  refreshToken() {
+    return this.http.post<{ message: string; statusCode: number }>(
+      environment.blogApiUrl + '/auth/refresh',
+      {},
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
   register(email: string, username: string, password: string): void {
     this.http
       .post<UserRegister>(environment.blogApiUrl + '/auth/register', {

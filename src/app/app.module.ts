@@ -14,7 +14,11 @@ import { HeaderComponent } from './header/header.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgOptimizedImage } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withInterceptors,
+} from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
 import { PostComponent } from './post/post.component';
 import { PostListComponent } from './post/post-list/post-list.component';
@@ -23,6 +27,7 @@ import { PostDetailComponent } from './post/post-detail/post-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WritePostComponent } from './write-post/write-post.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { authInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -54,7 +59,10 @@ import { MatRadioModule } from '@angular/material/radio';
     MatRadioModule,
     QuillModule.forRoot(),
   ],
-  providers: [provideAnimationsAsync()],
+  providers: [
+    provideAnimationsAsync(),
+    provideHttpClient(withInterceptors([authInterceptor])),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
