@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { PostService } from '../../post.service';
-import { Post } from '../../model/post.model';
+
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, Subscription } from 'rxjs';
-import { AuthService } from '../../auth/auth.service';
-import { User } from '../../types/user.interface';
-import { environment } from '../../../environments/environment';
+import { Post } from '../../model/post.model';
+import { User } from '../../../core/types/user.interface';
+import { environment } from '../../../../environments/environment';
+import { PostService } from '../../post.service';
+import { AuthService } from '../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-post-detail',

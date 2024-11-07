@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PostService } from '../post.service';
+
 import { ActivatedRoute } from '@angular/router';
 import { map, Subscription } from 'rxjs';
 import { Post } from '../model/post.model';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-write-post',

@@ -6,11 +6,11 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
+  selector: 'app-home',
+  templateUrl: './home.component.html',
   encapsulation: ViewEncapsulation.None,
 })
-export class HomePageComponent {
+export class HomeComponent {
   @ViewChild('menu', { static: true }) menuElement: ElementRef<HTMLDivElement>;
 
   scrollToElementEvent() {

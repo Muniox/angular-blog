@@ -1,67 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatButtonModule } from '@angular/material/button';
-import { QuillModule } from 'ngx-quill';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HeaderComponent } from './header/header.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { FooterComponent } from './footer/footer.component';
-import { NgOptimizedImage } from '@angular/common';
-import {
-  HttpClientModule,
-  provideHttpClient,
-  withInterceptors,
-} from '@angular/common/http';
-import { AuthComponent } from './auth/auth.component';
-import { PostComponent } from './post/post.component';
-import { PostListComponent } from './post/post-list/post-list.component';
-import { PostItemComponent } from './post/post-list/post-item/post-item.component';
-import { PostDetailComponent } from './post/post-detail/post-detail.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { WritePostComponent } from './write-post/write-post.component';
-import { MatRadioModule } from '@angular/material/radio';
-import { authInterceptor } from './auth.interceptor';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { HomeModule } from './modules/home/home.module';
+import { WritePostModule } from './modules/write-post/write-post.module';
+import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
+import { FooterComponent, NavbarComponent } from './layout';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    HeaderComponent,
-    HomePageComponent,
-    FooterComponent,
-    AuthComponent,
-    PostComponent,
-    PostListComponent,
-    PostComponent,
-    PostItemComponent,
-    PostDetailComponent,
     PageNotFoundComponent,
-    WritePostComponent,
+    FooterComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
+    // HomeModule,
+    // CoreModule,
     AppRoutingModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    NgOptimizedImage,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatRadioModule,
-    QuillModule.forRoot(),
-  ],
-  providers: [
-    provideAnimationsAsync(),
-    provideHttpClient(withInterceptors([authInterceptor])),
+    // SharedModule,
+    WritePostModule,
   ],
   bootstrap: [AppComponent],
 })

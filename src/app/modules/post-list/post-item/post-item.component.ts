@@ -5,9 +5,10 @@ import {
   SecurityContext,
   ViewEncapsulation,
 } from '@angular/core';
-import { Post } from '../../../model/post.model';
+
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
+import { Post } from '../../model/post.model';
 
 @Component({
   selector: 'app-post-item',

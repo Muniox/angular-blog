@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { User } from '../types/user.interface';
-import { environment } from '../../environments/environment';
-import { UserRegister } from '../types/user-register.interface';
+
 import { Router } from '@angular/router';
+import { User } from '../types/user.interface';
+import { environment } from '../../../environments/environment';
+import { UserRegister } from '../types/user-register.interface';
 
 @Injectable({
   providedIn: 'root',
